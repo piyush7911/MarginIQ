@@ -1,0 +1,998 @@
+{
+  "_meta": {
+    "description": "Synthetic seed data for MarginIQ production system. Covers every input feed in ARCHITECTURE.md section 3.2. All values are fabricated for demonstration; no real, official, or proprietary data is used. Scenario is engineered so every agent has a strong, conflicting signal: a premium frozen dessert facing a July-4th-weekend heatwave demand surge against limited cold-chain inventory and brand-dilution risk.",
+    "generated_for": "POST /api/v2/analyze-promotion",
+    "currency": "USD",
+    "schema_version": "2.0",
+    "as_of_date": "2026-06-09",
+    "target_sku": "SKU-FRZ-GELVAN-PT",
+    "target_store_scope": [
+      "STR-COAST-01",
+      "STR-METRO-02",
+      "STR-VALLEY-03"
+    ],
+    "narrative_hook": "A premium artisan gelato, one week before a record July-4th heatwave. Demand wants a deep cut; brand equity, cold-chain capacity, and margin all push back. The swarm must resolve the conflict."
+  },
+  "promotion_request": {
+    "sku": "SKU-FRZ-GELVAN-PT",
+    "product": "Glacier & Grove Madagascar Vanilla Bean Gelato — 1 Pint",
+    "category": "frozen_desserts",
+    "subcategory": "premium_gelato",
+    "candidate_discount_pct": 30,
+    "discount_search_bounds_pct": [
+      0,
+      45
+    ],
+    "timing": "pre_july4_heatwave",
+    "promo_window": {
+      "start": "2026-06-29",
+      "end": "2026-07-05"
+    },
+    "promo_channel": [
+      "freezer_endcap",
+      "weekly_circular",
+      "loyalty_app",
+      "social_geo_push"
+    ],
+    "base_price": 6.99,
+    "unit_cost": 2.8,
+    "seasonal_context": "peak_summer_holiday_weekend",
+    "risk_policy": {
+      "objective": "max_expected_profit",
+      "max_probability_of_loss": 0.1,
+      "min_service_level": 0.92
+    }
+  },
+  "product_master": {
+    "sku": "SKU-FRZ-GELVAN-PT",
+    "brand": "Glacier & Grove",
+    "brand_tier": "premium_artisan",
+    "price_image_index": 0.81,
+    "pack_size_oz": 16,
+    "storage": "frozen",
+    "cold_chain_required": true,
+    "shelf_life_days": 365,
+    "promo_freshness_window_days": 21,
+    "category": "frozen_desserts",
+    "subcategory": "premium_gelato",
+    "department": "frozen",
+    "introduced_on": "2023-05-01",
+    "tags": [
+      "premium",
+      "weather_sensitive",
+      "impulse",
+      "summer_peak",
+      "high_margin",
+      "instagrammable"
+    ]
+  },
+  "product_hierarchy": {
+    "category": "frozen_desserts",
+    "subcategory": "premium_gelato",
+    "siblings": [
+      {
+        "sku": "SKU-FRZ-GELSAL-PT",
+        "name": "Glacier & Grove Salted Caramel Gelato 1 Pint",
+        "relation": "same_brand_flavor"
+      },
+      {
+        "sku": "SKU-FRZ-GELCHC-PT",
+        "name": "Glacier & Grove Dark Chocolate Gelato 1 Pint",
+        "relation": "same_brand_flavor"
+      },
+      {
+        "sku": "SKU-FRZ-GELVAN-CUP",
+        "name": "Glacier & Grove Vanilla Gelato Mini Cup 6oz",
+        "relation": "same_brand_smaller_pack"
+      },
+      {
+        "sku": "SKU-FRZ-GELVAN-4PK",
+        "name": "Glacier & Grove Vanilla Gelato Mini Multipack 4x3oz",
+        "relation": "same_brand_multipack"
+      },
+      {
+        "sku": "SKU-FRZ-PREM-CMP-PT",
+        "name": "Frostfield Reserve Vanilla Bean 1 Pint",
+        "relation": "competing_premium_brand"
+      },
+      {
+        "sku": "SKU-FRZ-VALUE-VAN-QT",
+        "name": "Dairy Lane Vanilla 1 Quart",
+        "relation": "value_tier_substitute"
+      }
+    ],
+    "substitutes": [
+      {
+        "sku": "SKU-FRZ-GELSAL-PT",
+        "substitution_strength": 0.66
+      },
+      {
+        "sku": "SKU-FRZ-GELCHC-PT",
+        "substitution_strength": 0.59
+      },
+      {
+        "sku": "SKU-FRZ-GELVAN-CUP",
+        "substitution_strength": 0.71
+      },
+      {
+        "sku": "SKU-FRZ-PREM-CMP-PT",
+        "substitution_strength": 0.52
+      }
+    ],
+    "complements": [
+      {
+        "sku": "SKU-BAK-CONE-12",
+        "name": "Stonebake Belgian Waffle Cones 12ct",
+        "complement_strength": 0.44
+      },
+      {
+        "sku": "SKU-GRO-FUDGE-08",
+        "name": "Copper Pot Hot Fudge Sauce 8oz",
+        "complement_strength": 0.38
+      },
+      {
+        "sku": "SKU-PRD-STRAW-01",
+        "name": "Fresh Strawberries 1lb",
+        "complement_strength": 0.33
+      },
+      {
+        "sku": "SKU-GRO-SPRNK-04",
+        "name": "Rainbow Artisan Sprinkles 4oz",
+        "complement_strength": 0.27
+      }
+    ]
+  },
+  "cost_structure": {
+    "sku": "SKU-FRZ-GELVAN-PT",
+    "unit_cogs": 2.8,
+    "inbound_freight_per_unit": 0.41,
+    "cold_storage_cost_per_unit_per_week": 0.18,
+    "spoilage_risk_per_unit_per_week": 0.06,
+    "markdown_salvage_value_per_unit": 1.5,
+    "stockout_penalty_per_unit": 2.6,
+    "min_margin_pct": 0.22,
+    "list_price": 6.99
+  },
+  "inventory": [
+    {
+      "store": "STR-COAST-01",
+      "on_hand_units": 520,
+      "inbound_po_units": 240,
+      "lead_time_days": 4,
+      "reorder_point": 300,
+      "safety_stock": 160,
+      "weekly_baseline_velocity": 210,
+      "freezer_capacity_units": 900
+    },
+    {
+      "store": "STR-METRO-02",
+      "on_hand_units": 680,
+      "inbound_po_units": 200,
+      "lead_time_days": 3,
+      "reorder_point": 360,
+      "safety_stock": 180,
+      "weekly_baseline_velocity": 265,
+      "freezer_capacity_units": 1100
+    },
+    {
+      "store": "STR-VALLEY-03",
+      "on_hand_units": 300,
+      "inbound_po_units": 0,
+      "lead_time_days": 6,
+      "reorder_point": 240,
+      "safety_stock": 120,
+      "weekly_baseline_velocity": 175,
+      "freezer_capacity_units": 700
+    }
+  ],
+  "historical_sales": {
+    "_note": "Daily SKU x store units with shelf price, promo flag, and that day's high temperature. Temperature is included so the weather-elasticity model can separate price response from heat response. Real system expects >= 52 weeks; 21 representative days shown per store.",
+    "STR-COAST-01": [
+      {
+        "date": "2026-05-19",
+        "units": 26,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 71
+      },
+      {
+        "date": "2026-05-20",
+        "units": 24,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 69
+      },
+      {
+        "date": "2026-05-21",
+        "units": 33,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 78
+      },
+      {
+        "date": "2026-05-22",
+        "units": 41,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 84
+      },
+      {
+        "date": "2026-05-23",
+        "units": 58,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 91
+      },
+      {
+        "date": "2026-05-24",
+        "units": 62,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 93
+      },
+      {
+        "date": "2026-05-25",
+        "units": 49,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 86
+      },
+      {
+        "date": "2026-05-26",
+        "units": 71,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 88
+      },
+      {
+        "date": "2026-05-27",
+        "units": 84,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 92
+      },
+      {
+        "date": "2026-05-28",
+        "units": 96,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 95
+      },
+      {
+        "date": "2026-05-29",
+        "units": 88,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 90
+      },
+      {
+        "date": "2026-05-30",
+        "units": 79,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 83
+      },
+      {
+        "date": "2026-05-31",
+        "units": 57,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 76
+      },
+      {
+        "date": "2026-06-01",
+        "units": 44,
+        "price": 5.49,
+        "on_promo": true,
+        "temp_high_f": 74
+      },
+      {
+        "date": "2026-06-02",
+        "units": 29,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 72
+      },
+      {
+        "date": "2026-06-03",
+        "units": 31,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 75
+      },
+      {
+        "date": "2026-06-04",
+        "units": 38,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 81
+      },
+      {
+        "date": "2026-06-05",
+        "units": 47,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 87
+      },
+      {
+        "date": "2026-06-06",
+        "units": 64,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 94
+      },
+      {
+        "date": "2026-06-07",
+        "units": 68,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 96
+      },
+      {
+        "date": "2026-06-08",
+        "units": 45,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 82
+      },
+      {
+        "date": "2026-06-09",
+        "units": 33,
+        "price": 6.29,
+        "on_promo": true,
+        "temp_high_f": 70
+      },
+      {
+        "date": "2026-06-10",
+        "units": 36,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 71
+      },
+      {
+        "date": "2026-06-11",
+        "units": 39,
+        "price": 5.79,
+        "on_promo": true,
+        "temp_high_f": 72
+      }
+    ],
+    "STR-METRO-02": [
+      {
+        "date": "2026-05-19",
+        "units": 34,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 73
+      },
+      {
+        "date": "2026-05-20",
+        "units": 31,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 70
+      },
+      {
+        "date": "2026-05-21",
+        "units": 42,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 79
+      },
+      {
+        "date": "2026-05-22",
+        "units": 53,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 85
+      },
+      {
+        "date": "2026-05-23",
+        "units": 72,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 92
+      },
+      {
+        "date": "2026-05-24",
+        "units": 77,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 94
+      },
+      {
+        "date": "2026-05-25",
+        "units": 61,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 87
+      },
+      {
+        "date": "2026-05-26",
+        "units": 90,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 89
+      },
+      {
+        "date": "2026-05-27",
+        "units": 104,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 93
+      },
+      {
+        "date": "2026-05-28",
+        "units": 118,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 96
+      },
+      {
+        "date": "2026-05-29",
+        "units": 109,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 91
+      },
+      {
+        "date": "2026-05-30",
+        "units": 95,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 84
+      },
+      {
+        "date": "2026-05-31",
+        "units": 70,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 77
+      },
+      {
+        "date": "2026-06-01",
+        "units": 55,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 75
+      },
+      {
+        "date": "2026-06-02",
+        "units": 37,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 73
+      },
+      {
+        "date": "2026-06-03",
+        "units": 40,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 76
+      },
+      {
+        "date": "2026-06-04",
+        "units": 49,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 82
+      },
+      {
+        "date": "2026-06-05",
+        "units": 60,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 88
+      },
+      {
+        "date": "2026-06-06",
+        "units": 81,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 95
+      },
+      {
+        "date": "2026-06-07",
+        "units": 86,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 97
+      },
+      {
+        "date": "2026-06-08",
+        "units": 57,
+        "price": 6.99,
+        "on_promo": false,
+        "temp_high_f": 83
+      },
+      {
+        "date": "2026-06-09",
+        "units": 41,
+        "price": 6.29,
+        "on_promo": true,
+        "temp_high_f": 71
+      },
+      {
+        "date": "2026-06-10",
+        "units": 45,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 72
+      },
+      {
+        "date": "2026-06-11",
+        "units": 47,
+        "price": 5.79,
+        "on_promo": true,
+        "temp_high_f": 73
+      }
+    ],
+    "STR-VALLEY-03": [
+      {
+        "date": "2026-05-19",
+        "units": 22,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 80
+      },
+      {
+        "date": "2026-05-20",
+        "units": 21,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 78
+      },
+      {
+        "date": "2026-05-21",
+        "units": 29,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 86
+      },
+      {
+        "date": "2026-05-22",
+        "units": 38,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 92
+      },
+      {
+        "date": "2026-05-23",
+        "units": 51,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 99
+      },
+      {
+        "date": "2026-05-24",
+        "units": 55,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 101
+      },
+      {
+        "date": "2026-05-25",
+        "units": 43,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 94
+      },
+      {
+        "date": "2026-05-26",
+        "units": 63,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 96
+      },
+      {
+        "date": "2026-05-27",
+        "units": 78,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 100
+      },
+      {
+        "date": "2026-05-28",
+        "units": 92,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 103
+      },
+      {
+        "date": "2026-05-29",
+        "units": 81,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 98
+      },
+      {
+        "date": "2026-05-30",
+        "units": 66,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 90
+      },
+      {
+        "date": "2026-05-31",
+        "units": 47,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 83
+      },
+      {
+        "date": "2026-06-01",
+        "units": 35,
+        "price": 4.99,
+        "on_promo": true,
+        "temp_high_f": 81
+      },
+      {
+        "date": "2026-06-02",
+        "units": 24,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 79
+      },
+      {
+        "date": "2026-06-03",
+        "units": 27,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 83
+      },
+      {
+        "date": "2026-06-04",
+        "units": 34,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 89
+      },
+      {
+        "date": "2026-06-05",
+        "units": 44,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 95
+      },
+      {
+        "date": "2026-06-06",
+        "units": 58,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 100
+      },
+      {
+        "date": "2026-06-07",
+        "units": 61,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 102
+      },
+      {
+        "date": "2026-06-08",
+        "units": 40,
+        "price": 6.49,
+        "on_promo": false,
+        "temp_high_f": 88
+      },
+      {
+        "date": "2026-06-09",
+        "units": 26,
+        "price": 6.19,
+        "on_promo": true,
+        "temp_high_f": 80
+      },
+      {
+        "date": "2026-06-10",
+        "units": 28,
+        "price": 5.99,
+        "on_promo": true,
+        "temp_high_f": 79
+      },
+      {
+        "date": "2026-06-11",
+        "units": 29,
+        "price": 5.79,
+        "on_promo": true,
+        "temp_high_f": 81
+      }
+    ]
+  },
+  "promotion_history": [
+    {
+      "promo_id": "PRM-2025-2207",
+      "sku": "SKU-FRZ-GELVAN-PT",
+      "start": "2025-07-01",
+      "end": "2025-07-07",
+      "discount_pct": 30,
+      "channel": [
+        "weekly_circular",
+        "freezer_endcap"
+      ],
+      "baseline_units": 1180,
+      "observed_units": 2510,
+      "observed_lift_pct": 112.7,
+      "realized_margin": 0.19,
+      "weather_regime": "heatwave",
+      "stockout_days": 2,
+      "note": "Sold out in 2 of 3 stores by day 5; lost ~340 units of demand."
+    },
+    {
+      "promo_id": "PRM-2025-2588",
+      "sku": "SKU-FRZ-GELVAN-PT",
+      "start": "2025-09-12",
+      "end": "2025-09-18",
+      "discount_pct": 20,
+      "channel": [
+        "loyalty_app"
+      ],
+      "baseline_units": 690,
+      "observed_units": 1012,
+      "observed_lift_pct": 46.7,
+      "realized_margin": 0.31,
+      "weather_regime": "mild",
+      "stockout_days": 0
+    },
+    {
+      "promo_id": "PRM-2025-2913",
+      "sku": "SKU-FRZ-GELVAN-PT",
+      "start": "2025-12-20",
+      "end": "2025-12-26",
+      "discount_pct": 35,
+      "channel": [
+        "weekly_circular",
+        "loyalty_app"
+      ],
+      "baseline_units": 540,
+      "observed_units": 731,
+      "observed_lift_pct": 35.4,
+      "realized_margin": 0.12,
+      "weather_regime": "cold",
+      "stockout_days": 0,
+      "note": "Deep discount in cold season: weak lift, eroded margin, no urgency."
+    },
+    {
+      "promo_id": "PRM-2026-2102",
+      "sku": "SKU-FRZ-GELVAN-PT",
+      "start": "2026-05-26",
+      "end": "2026-06-01",
+      "discount_pct": 22,
+      "channel": [
+        "freezer_endcap",
+        "social_geo_push"
+      ],
+      "baseline_units": 820,
+      "observed_units": 1486,
+      "observed_lift_pct": 81.2,
+      "realized_margin": 0.26,
+      "weather_regime": "warm",
+      "stockout_days": 1
+    }
+  ],
+  "transaction_baskets": [
+    {
+      "basket_id": "BSK-90412",
+      "store": "STR-COAST-01",
+      "date": "2026-06-06",
+      "items": [
+        "SKU-FRZ-GELVAN-PT",
+        "SKU-BAK-CONE-12",
+        "SKU-GRO-FUDGE-08"
+      ]
+    },
+    {
+      "basket_id": "BSK-90455",
+      "store": "STR-COAST-01",
+      "date": "2026-06-06",
+      "items": [
+        "SKU-FRZ-GELVAN-PT",
+        "SKU-PRD-STRAW-01"
+      ]
+    },
+    {
+      "basket_id": "BSK-90501",
+      "store": "STR-METRO-02",
+      "date": "2026-06-07",
+      "items": [
+        "SKU-FRZ-GELVAN-PT",
+        "SKU-FRZ-GELSAL-PT",
+        "SKU-BAK-CONE-12"
+      ]
+    },
+    {
+      "basket_id": "BSK-90560",
+      "store": "STR-METRO-02",
+      "date": "2026-06-07",
+      "items": [
+        "SKU-FRZ-PREM-CMP-PT",
+        "SKU-GRO-FUDGE-08"
+      ]
+    },
+    {
+      "basket_id": "BSK-90633",
+      "store": "STR-VALLEY-03",
+      "date": "2026-06-07",
+      "items": [
+        "SKU-FRZ-GELVAN-PT",
+        "SKU-GRO-SPRNK-04",
+        "SKU-BAK-CONE-12"
+      ]
+    },
+    {
+      "basket_id": "BSK-90701",
+      "store": "STR-COAST-01",
+      "date": "2026-06-08",
+      "items": [
+        "SKU-FRZ-GELVAN-PT",
+        "SKU-PRD-STRAW-01",
+        "SKU-GRO-FUDGE-08"
+      ]
+    },
+    {
+      "basket_id": "BSK-90744",
+      "store": "STR-VALLEY-03",
+      "date": "2026-06-08",
+      "items": [
+        "SKU-FRZ-GELVAN-CUP",
+        "SKU-BAK-CONE-12"
+      ]
+    },
+    {
+      "basket_id": "BSK-90810",
+      "store": "STR-METRO-02",
+      "date": "2026-06-08",
+      "items": [
+        "SKU-FRZ-GELVAN-PT",
+        "SKU-FRZ-GELCHC-PT"
+      ]
+    }
+  ],
+  "competitor_prices": [
+    {
+      "competitor": "MarketBasket",
+      "sku_match": "Frostfield Reserve Vanilla Pint",
+      "price": 6.49,
+      "on_promo": false,
+      "promo_depth_pct": 0,
+      "observed_on": "2026-06-08",
+      "distance_miles": 1.4,
+      "source": "shelf_audit",
+      "note": "Premium rival holding price into the weekend."
+    },
+    {
+      "competitor": "GreenLeaf",
+      "sku_match": "House Premium Vanilla Pint",
+      "price": 4.99,
+      "on_promo": true,
+      "promo_depth_pct": 29,
+      "observed_on": "2026-06-09",
+      "distance_miles": 2.1,
+      "source": "web_feed",
+      "note": "Aggressive holiday-weekend cut already live — price-war signal."
+    },
+    {
+      "competitor": "Dairy Lane DTC",
+      "sku_match": "Dairy Lane Vanilla Quart",
+      "price": 5.49,
+      "on_promo": true,
+      "promo_depth_pct": 18,
+      "observed_on": "2026-06-09",
+      "distance_miles": 3.9,
+      "source": "web_feed",
+      "note": "Value-tier larger pack undercuts on price-per-oz."
+    }
+  ],
+  "calendar_events": [
+    {
+      "date": "2026-06-29",
+      "type": "payday_cycle",
+      "label": "end_of_month_payday",
+      "demand_index": 1.1
+    },
+    {
+      "date": "2026-07-03",
+      "type": "holiday_eve",
+      "label": "july4_eve_stockup",
+      "demand_index": 1.45
+    },
+    {
+      "date": "2026-07-04",
+      "type": "holiday",
+      "label": "independence_day",
+      "demand_index": 1.7
+    },
+    {
+      "date": "2026-07-05",
+      "type": "holiday",
+      "label": "long_weekend_sunday",
+      "demand_index": 1.35
+    }
+  ],
+  "weather_forecast": [
+    {
+      "store": "STR-COAST-01",
+      "date": "2026-06-29",
+      "temp_high_f": 89,
+      "precip_prob": 0.05,
+      "condition": "sunny"
+    },
+    {
+      "store": "STR-COAST-01",
+      "date": "2026-07-03",
+      "temp_high_f": 97,
+      "precip_prob": 0.0,
+      "condition": "clear_hot"
+    },
+    {
+      "store": "STR-COAST-01",
+      "date": "2026-07-04",
+      "temp_high_f": 99,
+      "precip_prob": 0.0,
+      "condition": "heatwave"
+    },
+    {
+      "store": "STR-METRO-02",
+      "date": "2026-07-03",
+      "temp_high_f": 98,
+      "precip_prob": 0.0,
+      "condition": "clear_hot"
+    },
+    {
+      "store": "STR-METRO-02",
+      "date": "2026-07-04",
+      "temp_high_f": 101,
+      "precip_prob": 0.0,
+      "condition": "heatwave"
+    },
+    {
+      "store": "STR-VALLEY-03",
+      "date": "2026-07-03",
+      "temp_high_f": 104,
+      "precip_prob": 0.0,
+      "condition": "heatwave"
+    },
+    {
+      "store": "STR-VALLEY-03",
+      "date": "2026-07-04",
+      "temp_high_f": 107,
+      "precip_prob": 0.0,
+      "condition": "extreme_heat"
+    }
+  ],
+  "brand_signals": {
+    "sku": "SKU-FRZ-GELVAN-PT",
+    "brand_tier": "premium_artisan",
+    "reference_price_estimate": 6.85,
+    "promo_frequency_last_12mo": 6,
+    "avg_discount_depth_last_12mo_pct": 26.0,
+    "full_price_sell_through_pct": 0.58,
+    "price_image_sensitivity": "high",
+    "note": "Already promoted 6x in 12 months at ~26% off; another deep cut risks resetting the reference price and training shoppers to wait for deals."
+  },
+  "customer_segments": [
+    {
+      "segment": "premium_loyalists",
+      "share_of_sales": 0.42,
+      "promo_redemption_rate": 0.33,
+      "price_elasticity_prior": -1.3,
+      "basket_size_avg": 41.5,
+      "note": "Buy on quality; deep discounts mostly subsidize purchases they'd make anyway."
+    },
+    {
+      "segment": "deal_driven",
+      "share_of_sales": 0.31,
+      "promo_redemption_rate": 0.74,
+      "price_elasticity_prior": -2.7,
+      "basket_size_avg": 28.9,
+      "note": "Highly responsive — the source of incremental volume."
+    },
+    {
+      "segment": "impulse_summer",
+      "share_of_sales": 0.27,
+      "promo_redemption_rate": 0.49,
+      "price_elasticity_prior": -1.9,
+      "basket_size_avg": 19.4,
+      "note": "Weather- and event-triggered; spikes on hot holiday weekends."
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarginIQ — Promotion Pricing Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css?v=6" />
+  <style>
+    .page-shell {
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .card {
+      box-sizing: border-box;
+    }
+    .scenario-templates { margin-bottom: 18px; }
+    .scenario-button-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .scenario-chip {
+      text-align: left;
+      border: 1px solid #e0d8c9;
+      background: #fffdf9;
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all .15s ease;
+      font-family: inherit;
+    }
+    .scenario-chip:hover { border-color: #bf5a36; box-shadow: 0 2px 10px rgba(191,90,54,.12); transform: translateY(-1px); }
+    .scenario-chip:disabled { opacity: .55; cursor: progress; }
+    .scenario-chip .chip-key {
+      font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+      color: #bf5a36; text-transform: uppercase;
+    }
+    .scenario-chip .chip-title { display: block; font-size: .82rem; font-weight: 600; color: #2b2b20; margin-top: 2px; line-height: 1.25; }
+    .scenario-chip .chip-expect { display: block; font-size: .7rem; color: #7a7264; margin-top: 4px; line-height: 1.25; }
+    .grounding-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .7rem; font-weight: 600; color: #2E7D32;
+      background: #E8F5E9; border: 1px solid #A5D6A7;
+      padding: 3px 9px; border-radius: 999px; margin-top: 8px;
+    }
+    .factor-list { margin: 8px 0 0; padding-left: 16px; }
+    .factor-list li { font-size: .78rem; color: #4a4438; margin-bottom: 4px; line-height: 1.35; }
+    .scenario-row.scenario-best { background: #FFF3E0; border-radius: 6px; font-weight: 600; }
+
+    /* Scenario table polish */
+    #scenario-table { max-height: 260px; overflow-y: auto; }
+    .scenario-row { display: grid; grid-template-columns: 0.7fr 1fr 0.9fr 0.8fr 0.7fr; gap: 6px; align-items: center; padding: 6px 8px; font-size: .8rem; border-bottom: 1px solid #f1ece2; }
+    .scenario-row.scenario-head { font-size: .64rem; text-transform: uppercase; letter-spacing: .05em; color: #9a9082; font-weight: 700; border-bottom: 1px solid #e0d8c9; position: sticky; top: 0; background: #fffdf9; }
+    .scenario-row .scenario-score { text-align: right; color: #7a7264; }
+    .scenario-foot { font-size: .66rem; color: #9a9082; padding: 8px 8px 2px; }
+
+    /* Workflow vertical flow map */
+    .wf-vert { display: flex; flex-direction: column; align-items: stretch; max-width: 320px; }
+    .wf-vstep {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .82rem; font-weight: 600; color: #2b2b20;
+      border-radius: 10px; padding: 10px 14px; border: 1px solid #e0d8c9; background: #fffdf9;
+    }
+    .wf-vstep b {
+      display: inline-flex; align-items: center; justify-content: center; flex: none;
+      width: 20px; height: 20px; border-radius: 50%; font-size: .66rem;
+      background: rgba(0,0,0,.08); color: inherit;
+    }
+    .wf-vconn { width: 2px; height: 14px; margin: 2px 0 2px 23px; background: #d8cdb8; }
+    .wf-ingest { background: #ECEFF1; border-color: #cfd8dc; color: #455A64; }
+    .wf-plan   { background: #FBF7EF; border-color: #e7dcc6; color: #8a6d3b; }
+    .wf-math   { background: #E3F2FD; border-color: #90CAF9; color: #1565C0; }
+    .wf-llm    { background: #F3E5F5; border-color: #CE93D8; color: #7B1FA2; }
+    .wf-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .wf-key { font-size: .64rem; font-weight: 600; padding: 3px 8px; border-radius: 999px; }
+    .wf-key.wf-ingest { background: #ECEFF1; color: #455A64; }
+    .wf-key.wf-plan { background: #FBF7EF; color: #8a6d3b; }
+    .wf-key.wf-math { background: #E3F2FD; color: #1565C0; }
+    .wf-key.wf-llm { background: #F3E5F5; color: #7B1FA2; }
+
+    /* Metric tiles tidy */
+    .metrics-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .metric-tile { background: #fffdf9; border: 1px solid #efe8da; border-radius: 10px; padding: 8px 10px; }
+    .metric-tile .mini-label { font-size: .62rem; }
+    .metric-tile strong { font-size: .95rem; display: block; margin-top: 2px; }
+    /* Intelligence card now spans the full bottom row */
+    .dashboard-bottom-row { grid-template-columns: 1fr !important; }
+    .dashboard-bottom-row .swarm-card { width: 100%; }
+
+    /* Selected scenario chip */
+    .scenario-chip.selected {
+      border-color: #bf5a36; background: #FFF3E0;
+      box-shadow: 0 0 0 2px rgba(191,90,54,.18);
+    }
+    #run-button { margin-top: 16px; width: 100%; justify-content: center; }
+    #run-button:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* Loading overlay */
+    .loading-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(43, 35, 25, .55); backdrop-filter: blur(3px);
+    }
+    .loading-overlay[hidden] { display: none; }
+    .loading-card {
+      background: #fffdf9; border-radius: 16px; padding: 32px 40px; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25); min-width: 320px;
+    }
+    .loading-spinner {
+      width: 44px; height: 44px; margin: 0 auto 18px;
+      border: 4px solid #efe8da; border-top-color: #bf5a36; border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-title { font-size: 1rem; font-weight: 700; color: #2b2b20; margin: 0 0 6px; }
+    .loading-stage { font-size: .85rem; color: #bf5a36; font-weight: 600; margin: 0 0 14px; min-height: 1.1em; }
+    .loading-bar { height: 6px; background: #efe8da; border-radius: 999px; overflow: hidden; }
+    .loading-bar-fill {
+      height: 100%; width: 40%; border-radius: 999px;
+      background: linear-gradient(90deg, #e0a06e, #bf5a36);
+      animation: slide 1.3s ease-in-out infinite;
+    }
+    @keyframes slide { 0% { margin-left: -40%; } 100% { margin-left: 100%; } }
+    .loading-sub { font-size: .7rem; color: #9a9082; margin: 12px 0 0; }
+  </style>
+</head>
+
+<body>
+  <div class="page-shell">
+    <nav class="top-nav">
+      <div class="logo-block">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <h1>MARGINIQ</h1>
+      </div>
+    </nav>
+
+    <div id="app-shell" class="app-shell">
+      <div class="workspace-track">
+        <!-- Landing Panel -->
+        <section class="landing-panel">
+          <div class="launch-grid">
+            <article class="intro-panel">
+              <div class="hero-section">
+                <div class="hero-content">
+                  <h1>Promotion intelligence with visible reasoning.</h1>
+                  <p class="hero-text">
+                    Evaluate a promotion, see what each agent believed, and inspect the exact reasoning path that shaped the recommendation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature-cards">
+                <div class="feature-card">
+                  <div class="card-icon-wrap decision">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" ry="1" /></svg>
+                  </div>
+                  <p class="eyebrow-accent">Decision View</p>
+                  <h3>Recommendation, confidence, and tradeoffs</h3>
+                  <p>See the final recommendation, how confident the system is, and key tradeoffs considered.</p>
+                  <div class="card-arrow">→</div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon-wrap reasoning">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+                  </div>
+                  <p class="eyebrow-accent">Reasoning View</p>
+                  <h3>Agent evidence, debate, and grounded policy</h3>
+                  <p>Inspect the evidence each agent gathered, the bull/bear debate, and the policy the critic applied — grounded by Foundry IQ.</p>
+                  <div class="card-arrow">→</div>
+                </div>
+                <div class="feature-card">
+                  <div class="card-icon-wrap business">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+                  </div>
+                  <p class="eyebrow-accent">Business View</p>
+                  <h3>Scenario comparison for discount choices</h3>
+                  <p>Compare different discount scenarios and their impact on key business metrics.</p>
+                  <div class="card-arrow">→</div>
+                </div>
+              </div>
+
+              <div class="how-it-works card">
+                <p class="eyebrow-accent">How It Works</p>
+                <div class="how-it-works-flow">
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" /></svg></div>
+                    <strong>1. Ingest</strong>
+                    <span>Featurize data &amp; gate capabilities</span>
+                  </div>
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg></div>
+                    <strong>2. Math Agents</strong>
+                    <span>Demand, profit, inventory, timing</span>
+                  </div>
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3" /></svg></div>
+                    <strong>3. Experts</strong>
+                    <span>LLM category specialists weigh in</span>
+                  </div>
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></div>
+                    <strong>4. Optimize</strong>
+                    <span>Monte-Carlo across every discount</span>
+                  </div>
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12" /></svg></div>
+                    <strong>5. Debate</strong>
+                    <span>Bull / bear / tension / read</span>
+                  </div>
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18" /><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" /></svg></div>
+                    <strong>6. Verify</strong>
+                    <span>Critic checks policy via Foundry IQ</span>
+                  </div>
+                  <div class="flow-step">
+                    <div class="step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><line x1="4" y1="22" x2="4" y2="15" /></svg></div>
+                    <strong>7. Decide</strong>
+                    <span>Arbiter finalizes &amp; explains</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <section class="control-panel card">
+              <div class="section-heading">
+                <p class="eyebrow-accent">CHOOSE A SCENARIO</p>
+                <h2>Pick a scenario, then run</h2>
+                <p class="mini-label-light">Select one of six known situations on the demo product, then run it live on Azure. Each has a known-correct outcome.</p>
+              </div>
+
+              <div class="scenario-templates">
+                <div id="scenario-buttons" class="scenario-button-grid"></div>
+              </div>
+
+              <button id="run-button" class="primary-button" type="button" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-small"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+                <span id="run-button-label">Select a scenario to run</span>
+              </button>
+            </section>
+          </div>
+        </section>
+
+        <section class="workspace-panel results-screen">
+          <div class="results-header">
+            <div class="header-left">
+              <p class="mini-label">MarginIQ</p>
+              <h2>Result insights</h2>
+            </div>
+            <button id="back-button" class="secondary-button" type="button">Back To Scenario</button>
+          </div>
+
+          <div class="results-board">
+            <div class="dashboard-top-row">
+              <div id="recommendation-card" class="card">
+                <p class="eyebrow-accent" style="margin:0 0 4px;">Recommendation</p>
+                <h3 id="recommendation-title" style="font-size:1rem;font-weight:700;margin:0 0 4px;line-height:1.3;">Waiting for analysis</h3>
+                <p id="recommendation-body" class="recommendation-copy">Submit a scenario to see the strategy.</p>
+                <div class="confidence-block">
+                  <div class="confidence-ring">
+                    <span id="confidence-value">--</span>
+                  </div>
+                  <div>
+                    <p class="mini-label" style="margin:0;">Confidence</p>
+                    <p id="execution-id" class="execution-id"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div id="metrics-card" class="card">
+                <p class="eyebrow-accent" style="margin:0 0 4px;">Core Metrics</p>
+                <p style="font-size:0.85rem;font-weight:700;margin:0 0 8px;">Decision snapshot</p>
+                <div id="metrics-grid" class="metrics-grid"></div>
+              </div>
+
+              <div id="scenarios-card" class="card">
+                <p class="eyebrow-accent" style="margin:0 0 4px;">Scenarios</p>
+                <p style="font-size:0.85rem;font-weight:700;margin:0 0 8px;">Simulations</p>
+                <div id="scenario-table" class="scenario-table"></div>
+              </div>
+
+              <div id="debate-card" class="card">
+                <p class="eyebrow-accent" style="margin:0 0 4px;">Debate</p>
+                <p style="font-size:0.85rem;font-weight:700;margin:0 0 8px;">Agent challenges</p>
+                <div id="debate-list" class="debate-list"></div>
+              </div>
+            </div>
+
+            <div class="dashboard-bottom-row">
+              <article class="card swarm-card">
+                <div class="section-heading">
+                  <p class="eyebrow">Intelligence</p>
+                  <h2>Agent Swarm</h2>
+                </div>
+                <div class="graph-toolbar">
+                  <span class="legend-pill positive">Positive</span>
+                  <span class="legend-pill warning">Risk</span>
+                  <span class="legend-pill error">Error</span>
+                </div>
+                <div id="graph-board-agents" class="graph-board-agents"></div>
+              </article>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading-overlay" class="loading-overlay" hidden>
+    <div class="loading-card">
+      <div class="loading-spinner"></div>
+      <p class="loading-title">Running MarginIQ on Azure</p>
+      <p id="loading-stage" class="loading-stage">Ingesting & featurizing…</p>
+      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+      <p class="loading-sub">gpt-4o reasoning · Foundry IQ grounding</p>
+    </div>
+  </div>
+
+  <script src="/static/app.js?v=7"></script>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+{
+  "passed": 6,
+  "total": 6,
+  "scenarios": [
+    {
+      "key": "s1",
+      "title": "Baseline \u2014 heatwave, premium, tight stock",
+      "expectation": "Non-zero shallow discount (5\u201315%) \u2014 demand responds but stock is tight.",
+      "recommended_discount": 5,
+      "decided_by": "optimizer",
+      "expected_profit": 5538.14,
+      "downside_risk": 0.0,
+      "inventory_risk": "high",
+      "competitor_heat": 0.51,
+      "weather_index": 0.792,
+      "timing_score": 0.57,
+      "clearance_pressure": 0.0,
+      "grounding_source": "Foundry IQ",
+      "confidence": 0.73,
+      "decision_factors": [
+        "The profit/risk curve indicates that a 5% discount maximizes expected profit while maintaining low risk.",
+        "The risk policy objective is to maximize expected profit with a maximum probability of loss of 0.1, which is satisfied at a 5% discount.",
+        "The optimizer recommended a 5% discount as the best compliant scenario."
+      ],
+      "recommendation": "Based on the analysis, it is recommended to proceed with a 5% discount for the Glacier & Grove Madagascar Vanilla Bean Gelato promotion during the pre-July 4th heatwave period. This discount level aligns with the risk policy, maximizes expected profit, and minimizes downside risk while maintaining compliance with the brand's pricing strategy.",
+      "passed": true
+    },
+    {
+      "key": "s2",
+      "title": "Clearance \u2014 5\u00d7 overstock, perishable",
+      "expectation": "Deep discount (\u226525%) to clear stock before it spoils.",
+      "recommended_discount": 30,
+      "decided_by": "optimizer",
+      "expected_profit": 2389.12,
+      "downside_risk": 0.213,
+      "inventory_risk": "low",
+      "competitor_heat": 0.51,
+      "weather_index": 0.792,
+      "timing_score": 0.57,
+      "clearance_pressure": 0.383,
+      "grounding_source": "Foundry IQ",
+      "confidence": 0.49,
+      "decision_factors": [
+        "30% has the best risk-adjusted profit (~$2,389) among policy-compliant options, with downside risk 21%.",
+        "Going deeper to 35% sells more units but cuts profit to ~$2,233 and raises downside risk to 21%.",
+        "Spoilage pressure (38% of stock at risk) favours clearing stock with a deeper cut.",
+        "Premium brand image argues against repeating a deep discount.",
+        "Flagged for human review: the leading scenario did not clear all policy gates."
+      ],
+      "recommendation": "Based on the analysis, I recommend proceeding with the proposed 30% discount for the Glacier & Grove Madagascar Vanilla Bean Gelato during the pre-July 4th heatwave promotion. This discount is expected to maximize profit while maintaining a high service level and adhering to the risk policy. However, consider the potential impact on brand perception due to the frequency of deep discounts and ensure alignment with brand guidelines.",
+      "passed": true
+    },
+    {
+      "key": "s3",
+      "title": "Severe shortage in a heatwave",
+      "expectation": "Shallow discount (\u226410%) and inventory risk flagged HIGH.",
+      "recommended_discount": 0,
+      "decided_by": "optimizer",
+      "expected_profit": -3629.72,
+      "downside_risk": 1.0,
+      "inventory_risk": "high",
+      "competitor_heat": 0.51,
+      "weather_index": 0.792,
+      "timing_score": 0.57,
+      "clearance_pressure": 0.0,
+      "grounding_source": "Foundry IQ",
+      "confidence": 0.19,
+      "decision_factors": [
+        "0% has the best risk-adjusted profit (~$-3,630) among policy-compliant options, with downside risk 100%.",
+        "Going deeper to 5% sells more units but cuts profit to ~$-4,191 and raises downside risk to 100%.",
+        "Inventory limits depth: stockout probability is 98% at higher discounts.",
+        "Premium brand image argues against repeating a deep discount.",
+        "Flagged for human review: the leading scenario did not clear all policy gates."
+      ],
+      "recommendation": "Based on the analysis, I recommend maintaining the current price without applying the proposed 30% discount for the Glacier & Grove Madagascar Vanilla Bean Gelato. This decision aligns with the brand's premium positioning, avoids potential stockouts during the high-demand pre-July 4th heatwave, and ensures compliance with service level and brand dilution policies.",
+      "passed": true
+    },
+    {
+      "key": "s4",
+      "title": "Competitor price war",
+      "expectation": "Competitor market-heat detected HIGH (\u22650.7).",
+      "recommended_discount": 5,
+      "decided_by": "optimizer",
+      "expected_profit": 5538.14,
+      "downside_risk": 0.0,
+      "inventory_risk": "high",
+      "competitor_heat": 0.85,
+      "weather_index": 0.792,
+      "timing_score": 0.57,
+      "clearance_pressure": 0.0,
+      "grounding_source": "Foundry IQ",
+      "confidence": 0.73,
+      "decision_factors": [
+        "The profit/risk curve indicates that a 5% discount maximizes expected profit while maintaining low risk.",
+        "The risk policy objective is to maximize expected profit with a maximum probability of loss of 0.1, which is satisfied at a 5% discount.",
+        "The inventory and demand analysis suggests that a 5% discount balances demand uplift and inventory constraints.",
+        "The brand image considerations favor a smaller discount to avoid diluting the premium perception of the product."
+      ],
+      "recommendation": "Based on the analysis, it is recommended to implement a 5% discount for the Glacier & Grove Madagascar Vanilla Bean Gelato during the pre-July 4th heatwave promotion window. This discount optimizes expected profit while adhering to the risk policy constraints, minimizes inventory risks, and preserves the premium brand image.",
+      "passed": true
+    },
+    {
+      "key": "s5",
+      "title": "Cold off-season",
+      "expectation": "Off-season correctly detected \u2014 weather index ~0 and timing low.",
+      "recommended_discount": 10,
+      "decided_by": "optimizer",
+      "expected_profit": 3450.32,
+      "downside_risk": 0.0,
+      "inventory_risk": "low",
+      "competitor_heat": 0.51,
+      "weather_index": 0.0,
+      "timing_score": 0.2,
+      "clearance_pressure": 0.0,
+      "grounding_source": "Foundry IQ",
+      "confidence": 0.75,
+      "decision_factors": [
+        "The profit/risk curve indicates that a 10% discount achieves the highest expected profit.",
+        "The downside risk is minimal at 10%, aligning with the risk policy.",
+        "A 10% discount maintains a balance between profitability and brand image preservation."
+      ],
+      "recommendation": "Based on the analysis, it is recommended to implement a 10% discount for the Glacier & Grove Madagascar Vanilla Bean Gelato during the promotional period. This discount level aligns with the risk policy, achieves the highest expected profit, and preserves the premium brand image by avoiding excessive discounting.",
+      "passed": true
+    },
+    {
+      "key": "s6",
+      "title": "Margin floor binding",
+      "expectation": "Shallow discount (\u226410%) \u2014 deeper cuts would breach the margin floor.",
+      "recommended_discount": 0,
+      "decided_by": "optimizer",
+      "expected_profit": 1429.02,
+      "downside_risk": 0.0,
+      "inventory_risk": "high",
+      "competitor_heat": 0.51,
+      "weather_index": 0.792,
+      "timing_score": 0.57,
+      "clearance_pressure": 0.0,
+      "grounding_source": "Foundry IQ",
+      "confidence": 0.55,
+      "decision_factors": [
+        "0% has the best risk-adjusted profit (~$1,429) among policy-compliant options, with downside risk 0%.",
+        "Going deeper to 5% sells more units but cuts profit to ~$992 and raises downside risk to 0%.",
+        "Inventory limits depth: stockout probability is 59% at higher discounts.",
+        "Premium brand image argues against repeating a deep discount.",
+        "Flagged for human review: the leading scenario did not clear all policy gates."
+      ],
+      "recommendation": "Based on the analysis, it is recommended to avoid implementing the proposed 30% discount for Glacier & Grove Madagascar Vanilla Bean Gelato during the pre-July 4 heatwave period. Instead, consider a lower discount or alternative promotional strategies to maintain brand integrity and optimize profit margins while addressing inventory constraints and minimizing stockout risks.",
+      "passed": true
+    }
+  ]
+}
