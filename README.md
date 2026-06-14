@@ -9,7 +9,7 @@ Powered by **Azure AI Foundry** (gpt-4o) and grounded by **Foundry IQ**.
 
 ## The app
 
-Pick one of six known scenarios and run it live on Azure — no setup, no manual data entry:
+Pick one of six known scenarios and run it :
 
 ![MarginIQ — scenario selection](results/landing-scenario-selection.png)
 
