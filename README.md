@@ -7,6 +7,19 @@ Powered by **Azure AI Foundry** (gpt-4o) and grounded by **Foundry IQ**.
 
 ---
 
+## The app
+
+Pick one of six known scenarios and run it live on Azure — no setup, no manual data entry:
+
+![MarginIQ — scenario selection](results/landing-scenario-selection.png)
+
+Every run shows the recommendation, calibrated confidence, the simulated discount curve,
+the agent debate, and each agent's evidence — with the policy check grounded by Foundry IQ:
+
+![MarginIQ — results dashboard](results/results-dashboard.png)
+
+---
+
 ## The problem
 
 A single retail promotion decision pulls in eight forces at once — price elasticity,
